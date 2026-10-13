@@ -1,0 +1,26 @@
+/* Styles for Shared TeX Preamble. Obsidian loads this file while the plugin is enabled. */
+
+.stp-muted {
+	color: var(--text-muted);
+}
+
+.stp-error {
+	color: var(--text-error);
+}
+
+.stp-hidden {
+	display: none;
+}
+
+.stp-preview .stp-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.stp-preview .stp-table th,
+.stp-preview .stp-table td {
+	padding: var(--size-4-1) var(--size-4-2);
+	border-bottom: 1px solid var(--background-modifier-border);
+	text-align: start;
+	vertical-align: middle;
+}
