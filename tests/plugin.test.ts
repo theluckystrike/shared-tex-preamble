@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { App } from 'obsidian-test-mocks/obsidian';
 import SharedTexPreamblePlugin from '../src/main';
 import { mathError } from '../src/math';
@@ -120,7 +120,8 @@ describe('settings', () => {
 });
 
 describe('Pro', () => {
-	it('keeps the values of product.yaml', () => {
+	// product.yaml lives only in the monorepo; the exported repo has no copy, so the check runs there only.
+	it.skipIf(!existsSync('product.yaml'))('keeps the values of product.yaml', () => {
 		const yaml = readFileSync('product.yaml', 'utf8');
 		expect(yaml).toContain(`client_id: ${SPONSORS.clientId}`);
 		expect(yaml).toContain(`summary: ${PRO_UI.proSummary}`);
