@@ -3,6 +3,7 @@ import { sponsorsSettingItems } from './license/github-obsidian';
 import { PRO_UI, isPro } from './pro';
 import { isPreambleExtension } from './preamble';
 import type SharedTexPreamblePlugin from './main';
+import { helloSettingItems } from './hello/settings';
 
 export interface MacroLibrary {
 	name: string;
@@ -67,6 +68,11 @@ export class SharedTexPreambleSettingTab extends PluginSettingTab {
 	}
 
 	getSettingDefinitions(): SettingDefinitionItem[] {
+		// The product rows, then the "More from NoteMods" card (packages/hello).
+		return [...this.productSettingDefinitions(), ...helloSettingItems()];
+	}
+
+	productSettingDefinitions(): SettingDefinitionItem[] {
 		const s = this.plugin.settings;
 		const pro = isPro();
 		const filter = (f: TFile) => isPreambleExtension(f.extension);

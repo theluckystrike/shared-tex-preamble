@@ -78,6 +78,8 @@ An optional first argument works as in LaTeX: `\newcommand{\avg}[2][N]{\frac{1}{
 
 ## Settings
 
+After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
+
 | Setting | What it does |
 | --- | --- |
 | Macro file | The vault file with your definitions: `.md`, `.tex` or `.sty`. |
