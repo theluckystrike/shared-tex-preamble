@@ -1,5 +1,6 @@
 {
 	"name": "shared-tex-preamble",
+	"repository": {"type": "git", "url": "theluckystrike/shared-tex-preamble.git"},
 	"version": "1.1.0",
 	"private": true,
 	"description": "Load TeX commands from one vault file and use them in math notes on phones and tablets.",
