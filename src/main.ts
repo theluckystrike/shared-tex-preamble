@@ -2,7 +2,7 @@ import { MarkdownView, Notice, Plugin, finishRenderMath, loadMathJax, renderMath
 import type { SponsorsManager } from './license/index';
 import { createGitHubSponsors } from './license/github-obsidian';
 import { engineSource, extractTex, formatIssue, isPreambleExtension, parsePreamble, type Issue, type Preamble } from './preamble';
-import { SPONSORS, bindPro, isPro, resetPro } from './pro';
+import { SPONSORS, bindPro, isPro, resetPro, proNotice } from './pro';
 import { DEFAULT_SETTINGS, SharedTexPreambleSettingTab, normalizeSettings, type SharedTexPreambleSettings } from './settings';
 import { mathError } from './math';
 import { LibraryPreviewModal, LibrarySuggestModal, type LibraryChoice } from './preview';
@@ -116,7 +116,7 @@ export default class SharedTexPreamblePlugin extends Plugin {
 	}
 
 	needsPro(feature: string): void {
-		new Notice(`${feature} is a pro feature. Sponsor on GitHub, then sign in from the plugin settings.`);
+		proNotice(`${feature} is a pro feature.`);
 	}
 
 	/** Loads the active file into the engine and draws open Reading views again. Startup shows a notice only for a problem. */

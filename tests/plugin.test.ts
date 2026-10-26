@@ -15,6 +15,7 @@ function fakeManager(start: boolean) {
 	const fns = new Set<() => void>();
 	return {
 		isPro: () => pro,
+		getState: () => ({ status: 'signed-out', lastAttemptAt: 0 }), hasToken: () => false, config: { sponsorLogin: 'theluckystrike' },
 		onChange: (fn: () => void) => {
 			fns.add(fn);
 			return () => fns.delete(fn);
