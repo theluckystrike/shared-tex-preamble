@@ -4,6 +4,22 @@ Shared TeX Preamble loads TeX commands from one file in your vault into the math
 
 <img src="https://raw.githubusercontent.com/theluckystrike/shared-tex-preamble/HEAD/docs/shared-tex-preamble.gif" alt="Reload the shared macros, read two math notes, switch to the Physics library and preview the Draft library" width="720">
 
+## Quick start
+
+1. Create a note named `Macros.md` with a `$$` block of definitions:
+
+```tex
+$$
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\DeclareMathOperator{\tr}{tr}
+$$
+```
+
+2. Open "Settings → Shared TeX Preamble" and select the file in "Macro file". The plugin loads it at once.
+3. Write `$\norm{x} \in \R$` in a note. The note shows the norm and the set of real numbers.
+4. After a change to the macro file, run "Reload the macro file".
+
 ## Features
 
 ### One macro file for the whole vault
@@ -128,7 +144,7 @@ In MathJax, `\require` asks the engine to load an extension. The plugin loads no
 
 The core features are free. Pro features need a GitHub Sponsors sponsorship of theluckystrike: $5 a month or more, or $15 once. A total payment of $15 meets the payment requirement for Pro without further payment. Sign-in and the checks below still apply. Your notes stay readable and editable with or without Pro.
 
-GitHub handles the payment. Sponsor at https://github.com/sponsors/theluckystrike. You need no account for the free features. Pro needs the GitHub account that sponsors.
+GitHub handles the payment. Sponsor at https://github.com/sponsors/theluckystrike?frequency=one-time&metadata_source=shared-tex-preamble. You need no account for the free features. Pro needs the GitHub account that sponsors.
 
 Until you select "Sign in with GitHub" in the settings, Shared TeX Preamble makes no network requests. Sign in uses the GitHub device flow. Shared TeX Preamble sends its public client ID and the scope `read:user` to `https://github.com/login/device/code` and shows you a code. While you enter the code at https://github.com/login/device, it asks `https://github.com/login/oauth/access_token` every few seconds to check the sign-in status. The scope permits profile reads only. GitHub needs this access to show the sponsorship tier. It grants no repository scope and no write access.
 
