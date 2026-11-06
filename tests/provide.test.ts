@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { App } from 'obsidian-test-mocks/obsidian';
 import { engineSource, parsePreamble } from '../src/preamble';
+import { GROWTH_LIMIT, growth } from './growth';
 import manifest from '../manifest.json';
 
 /** A small stand-in for the math engine. Like MathJax 3 and 4, it has no \providecommand and shows an undefined command as red text. */
@@ -78,12 +79,18 @@ describe('providecommand of an engine command', () => {
 
 describe('large macro files', () => {
 	it('parses 20000 definitions with the right line numbers in linear time', () => {
-		const lines = Array.from({ length: 20_000 }, (_, i) => `\\newcommand{\\m${String.fromCharCode(97 + (i % 26))}${'x'.repeat(Math.floor(i / 26) % 30)}}{${i}}`);
-		lines[19_999] = '\\newcommand{\\bad}';
-		const t = performance.now();
-		const p = parsePreamble(lines.join('\n'));
-		// The quadratic line count took about 13 s here; linear time takes well under 1 s.
-		expect(performance.now() - t).toBeLessThan(3000);
+		const textOf = (n: number) => {
+			const lines = Array.from({ length: n }, (_, i) => `\\newcommand{\\m${String.fromCharCode(97 + (i % 26))}${'x'.repeat(Math.floor(i / 26) % 30)}}{${i}}`);
+			lines[n - 1] = '\\newcommand{\\bad}';
+			return lines.join('\n');
+		};
+		// The quadratic line count took about 13 s here. The guard compares 20000 lines with 2000 lines, timed in this test.
+		const g = growth((n) => {
+			const text = textOf(n);
+			return () => parsePreamble(text);
+		}, 20_000);
+		expect(g.ratio, g.text).toBeLessThan(GROWTH_LIMIT);
+		const p = parsePreamble(textOf(20_000));
 		expect(p.defs).toHaveLength(19_999);
 		expect(p.defs[19_998]!.line).toBe(19_999);
 		expect(p.errors).toEqual([{ line: 20_000, message: '\\newcommand{\\bad} has no replacement text' }]);

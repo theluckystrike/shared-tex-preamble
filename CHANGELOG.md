@@ -1,5 +1,11 @@
 # shared-tex-preamble
 
+## 1.1.2
+
+### Patch Changes
+
+- 371e979: The Pro notice of Shared TeX Preamble now says that one payment turns on Pro in every NoteMods plugin.
+
 ## 1.1.1
 
 ### Patch Changes

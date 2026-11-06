@@ -1,6 +1,6 @@
 {
 	"name": "shared-tex-preamble",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"private": true,
 	"description": "Load TeX commands from one vault file and use them in math notes on phones and tablets.",
 	"main": "main.js",
