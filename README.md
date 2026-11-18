@@ -1,5 +1,7 @@
 # Shared TeX Preamble
 
+[![Pro: $15 once or $5 a month on GitHub Sponsors](https://img.shields.io/badge/Pro-%2415%20once%20or%20%245%2Fmonth-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/theluckystrike) Pro costs [$15 one time](https://github.com/sponsors/theluckystrike/sponsorships?tier_id=666162&metadata_source=shared-tex-preamble-readme) or [$5 a month](https://github.com/sponsors/theluckystrike/sponsorships?tier_id=666161&metadata_source=shared-tex-preamble-readme) on GitHub Sponsors. One sponsorship turns on Pro in every NoteMods Obsidian plugin that has Pro.
+
 Shared TeX Preamble loads TeX commands from one file in your vault into the math engine of Obsidian. Write `\newcommand{\R}{\mathbb{R}}` one time, and each note can use `\R` in `$...$` and `$$...$$` math. The plugin uses only the public Obsidian API (`loadMathJax` and `renderMath`) and no Node or Electron API, so it can load on Obsidian for phones and tablets too. The end-to-end tests ran in an emulated phone window on desktop. A real phone or tablet was not tested.
 
 <img src="https://raw.githubusercontent.com/theluckystrike/shared-tex-preamble/HEAD/docs/shared-tex-preamble.gif" alt="Reload the shared macros, read two math notes, switch to the Physics library and preview the Draft library" width="720">
